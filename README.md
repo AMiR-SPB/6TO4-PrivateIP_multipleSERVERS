@@ -278,7 +278,6 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
 
 ## 🙏 A Special Thanks to
 
-- [Azumi67](https://github.com/Azumi67/)
 - [Amir SPB](https://github.com/AMiR-SPB/) For Create README Files
 
 
