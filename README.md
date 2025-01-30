@@ -1,287 +1,335 @@
-![R (2)](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/a064577c-9302-4f43-b3bf-3d4f84245a6f)
-نام پروژه : تانل 6to4 - پرایوت ایپی (امکان تانل بین 5 سرور خارج و 1 ایران و برعکس)
----------------------------------------------------------------
-------------------------
-![R (a2)](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/57a4c3f1-f637-4d4d-bec2-1de36206d136)**دسترسی سریع به اسکریپت**
-
-
-- [کلیک - click](https://github.com/Azumi67/6TO4-PrivateIP_multipleSERVERS/tree/main#%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA-%D9%85%D9%86)
-------------------------
-![Update-Note--Arvin61r58](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/abc423fc-f055-42e2-a60f-7b91e468fd04)  **امکان تانل بین 5 سرور خارج و 1 سرور ایران و برعکس**
-- مانند قبل سرور های خارج خودتان را اول کانفیگ کنید و بعد سرور ایران
-- امکان تانل بین 5 سرور خارج و یک سرور ایران و برعکس
-- از این پرایوت ایپی ها برای لود بالانس که به زودی قرار میدم هم میتوان استفاده کرد
-- دقت نمایید اگر ارتباط پینگ بین دو طرف سرور در حین ساخت 5 سرور خارج و یک سرور ایران و برعکس ، انجام نشد؛ یک بار تمام سرور ها را با هم، هم زمان ریبوت کنید و احتمال زیاد درست شود.
-- روش دیگر این است که ببینید کدام سرور مشکل اتصال دارد . مثلا اگر تانل 5 سرور خارج و یک سرور ایران است و به فرض مثال سرور 3 خارج مشکل دارد. بدون انکه چیزی را دست بزنید ، تنها سرور 3 را Uninstall کنید و دوباره اقدام به کانفیگ سرور 3 بکنید . این هم مشکل شما را حل میکند.
-- دقت کنید که برای کانفیگ های سرور هایتان باید بدانید کدامین، سرور 1 2 3 4 5 است که به اشتباه از دو ایپی پرایوت یکسان استفاده نکنید که در تانل شما مشکل به وجود می اورد.
-- به طور مثال برای 5 سرور خارج و 1 سرور ایران : در نظر بگیرید که سرور اول من سرور ترکیه و سرور دوم من سرور المان میباشد. شما باید در کانفیگ سرور خارج 1 و سرور ایران، برای سرور 1 خارج از ایپی سرور ترکیه استفاده کنید و در کانفیگ سرور 2 خارج و همچنین سرور ایران ، برای سرور 2 خارج از ایپی سرور المان استفاده نمایید . در غیر این صورت تانل، درست کار نخواهد کرد.
-- اطمینان پیدا کنید که قبل از کانفیگ تاتل 6to4 میتوانید از سرور ایران به سرور های خارجتان، ssh برقرار کنید یا پینگ میتوانید بگیرید.
-- مورد دیگه این هست که به طور مثال در تانل 5 سرور خارج و 1 سرور ایران ، داخل سرور ایران برای هر سرور خارج یک ایپی پرایوت جدا خواهیم داشت که باید به اینها برای کانفیگ های تانلتان دقت کنید .اگر تانل پنل به پنل هست که تنها نیاز به ایپی خارج هر سرور میباشد. اگر تانل هایی مانند FRP میباشد که نیاز به ایپی پرایوت های هر سرور خارج در سرور ایران دارید.
-- به طور مثال در سرور ایران برای سرور ترکیه، یک ایپی پرایوت دارید و برای سرور المان، یک پرایوت ایپی دیگه دارید.
-- مورد دیگر اینکه اگر تانل پنل به پنل هست، باید پرایوت ایپی ها را باز کنید.
-- با آزمون و خطا، میتوانید تانل ها را به درستی کانفیگ نمایید.
- 
- ---------------------------------
-
-![check](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/13de8d36-dcfe-498b-9d99-440049c0cf14)
-**امکانات**
- <div dir="rtl">&bull; ساخت تانل 6to4 بین چندین سرور [Anycast] & [PrivateIP]</div>
- <div dir="rtl">&bull; تانل بین 5 سرور خارج و 1 سرور ایران و برعکس</div>
- <div dir="rtl">&bull; امکان استفاده از ایپی در سرور های دیگر (توصیه نمیشود) [Anycast]</div>
- <div dir="rtl">&bull; استفاده از cronjob به جای service</div>
- <div dir="rtl">&bull; امکان  حذف کردن تانل ها</div>
- <div dir="rtl">&bull; پس از این تانل، میتوانید از ایپی های ساخته شده برای تانل اصلی یا پورت فوروارد استفاده نمایید</div>
-  <div dir="rtl">&bull; امکان استفاده در لود بالانس FRP</div>
- <div dir="rtl">&bull;امکان ساخت چندین پرایوت ایپی برای سرور های شما</div>
- 
- ------------------------------------------------------
-  
-  ![6348248](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/398f8b07-65be-472e-9821-631f7b70f783)
-**آموزش**
-
-------------------------
-![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP_multipleSERVERS/assets/119934376/dd030326-0687-412d-bd38-092e7492ddef)
-**ساخت پرایوت ایپی بین یک سرور خارج و ایران**
-
-  <p align="right">
-  <img src="https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/d92b4e8f-b368-4938-b639-5efea493e184" alt="Image" />
-</p>
-
-
-
-<div dir="rtl">&bull; ساخت پرایوت ایپی : از سرور خارج شروع کنید.</div>
- <div dir="rtl">&bull; ایپی 4 خارج و ایران را وارد نمایید</div> 
-  <div dir="rtl">&bull; ساب نت 64 را وارد نمایید</div>
-   <div dir="rtl">&bull; تعداد ایپی پرایوتی که نیاز دارید را وارد نمایید</div>
-    <div dir="rtl">&bull; ایپی های ساخته شده را در notepad برای استفاده در تانل بنویسید</div>
-     <div dir="rtl">&bull; به صورت اتوماتیک ایپی پرایوت وسرویس پینگ به منظور جلوگیری از اختلال برای شما ساخته خواهد شد</div>
-      <div dir="rtl">&bull; سپس همین مراحل را برای سرور ایران هم انجام بدهید</div>
-
---------------------------------------
-
-**5 سرور ایران و 1 سرور خارج**
-
-![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/902a2efa-f48f-4048-bc2a-5be12143bef3) **سرور خارج**
-
- 
-
-
- <p align="right">
-  <img src="https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/eedfceb3-fe05-4772-a0c3-ec57fb6fc2e8" alt="Image" />
-</p>
- <div dir="rtl">&bull;در این تانل از 2 سرور ایران و 1 سرور خارج استفاده میکنیم.  </div>
-  <div dir="rtl">&bull; همیشه کانفیگ تانل را از سرور خارج شروع نمایید</div>
-   <div dir="rtl">&bull;تعداد سرور ایرانی که دارید را وارد نمایید ( بیشترین مقدار مجاز 5 عدد میباشد) </div>
-    <div dir="rtl">&bull; برای هر سرور ایران، ایپی یکسان خارج ( به طور مثال ترکیه ) را قرار دهید و ایپی های سرور ایران خود را به ازای هر سرور، وارد نمایید</div>
-     <div dir="rtl">&bull; .توجه کنید که اگر به طور مثال ایپی اروان را برای سرور یک ایران وارد نمایید، همان ایپی اروان را برای کانفیگ سرور 1 ایران وارد نمایید </div>
-     <div dir="rtl">&bull;به این معنی که اگر برای سرور یک از ایپی اروان و سرور دوم از ایپی شاتل استفاده کردید، در کانفیگ سرور های ایران هم سرور اول ایپی اروان و سرور دوم ایپی شاتل خواهد بود در غیر اینصورت تانل برقرار نخواهد شد </div>
-      <div dir="rtl">&bull; تعداد ایپی که برای هر سرور نیاز دارید را وارد نمایید</div>
-       <div dir="rtl">&bull; برای اینکه cronjob برای سرور های شما ساخته شود، تعداد سرور ها را با فاصله وارد نمایید. به طور مثال اگر 2 سرور ایران دارید اینگونه وارد نمایید ( 2 1 )</div>
-
-
-----------------------
-
-![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/49000de2-53b6-4c5c-888d-f1f397d77b92)**سرور ایران 1**
-
-
-<p align="right">
-  <img src="https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/143f1dd2-0c63-4f6a-9b40-0034eabefb35" alt="Image" />
-</p>
- <div dir="rtl">&bull; حالا باید برای هر سرور ایران، کانفیگ را جداگانه انجام دهیم</div>
- <div dir="rtl">&bull; مثلا برای سرور یک ایران در عکس قبل از سرور اروان استفاده کردیم، پس باید اینجا هم برای سرور یک ایران از سرور اروان استفاده نماییم</div>
-  <div dir="rtl">&bull; سرور خارج برای تمامی سرور های ایران یکسان است چون تانل 3 سرور ایران و 1 سرور خارج میباشد</div>
-   <div dir="rtl">&bull; تعداد ایپی هایی که میخواهید را وارد نمایید</div>
-
---------------------------------------
-![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/c14c77ec-dc4e-4c8a-bdc2-4dc4e42a1815)**سرور ایران 2**
-
-
-<p align="right">
-  <img src="https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/3bae7757-360b-4460-bd2b-adbbcfaad8d0" alt="Image" />
-</p>
- <div dir="rtl">&bull; سرور دوم ایران را برای کانفیگ سرور دوم ایران وارد نمایید</div>
-  <div dir="rtl">&bull; سرور خارج برای تمامی سرور های خارج یکسان میباشد</div>
-   <div dir="rtl">&bull; تعداد ایپی که میخواهید را وارد نمایید</div>
-    <div dir="rtl">&bull; اگر سرور سوم ایران دارید، مانند نمونه کانفیگ را انجام دهید</div>
-     <div dir="rtl">&bull; برای حذف تانل ها از قسمت مربوطه اقدام به حذف تانل نمایید</div>
-
-
----------------------------------
-
-**5 سرور خارج و 1 سرور ایران**
-
-![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/2c1ae043-4bc5-4738-b1d4-6951c8fecbdc)**سرور خارج 1**
-
-
-
-<p align="right">
-  <img src="https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/b8f47148-227b-440d-8d7e-c782a6a61a78" alt="Image" />
-</p>
-
-<div dir="rtl">&bull; همیشه کانفیگ تانل را از سرور خارج شروع نمایید</div>
-<div dir="rtl">&bull; حالا باید برای هر سرور خارج، کانفیگ را جداگانه انجام دهیم</div>
-  <div dir="rtl">&bull; سرور ایران برای تمامی سرور های خارج یکسان است چون تانل 3 سرور خارج و 1 سرور ایران میباشد</div>
-   <div dir="rtl">&bull; تعداد ایپی هایی که میخواهید را وارد نمایید</div>
- 
-------------------------------------------------------------------------------
-![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/2c1ae043-4bc5-4738-b1d4-6951c8fecbdc)**سرور خارج 2**
-
-<p align="right">
-  <img src="https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/af8fd4f2-174b-4560-9875-ac33a5b5e6c5" alt="Image" />
-</p>
-
- <div dir="rtl">&bull; سرور دوم خارج را برای کانفیگ سرور دوم خارج وارد نمایید</div>
-  <div dir="rtl">&bull; سرور ایران برای تمامی سرور های خارج یکسان میباشد</div>
-   <div dir="rtl">&bull; تعداد ایپی که میخواهید را وارد نمایید</div>
-    <div dir="rtl">&bull; اگر سرور سوم خارج دارید، مانند نمونه کانفیگ را انجام دهید</div>
-     <div dir="rtl">&bull; برای حذف تانل ها از قسمت مربوطه اقدام به حذف تانل نمایید</div>
-
-
----------------------------------------------------------------------------
-
-![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/2e325267-240d-4e20-ba5a-ff408331d5a0)**سرور ایران**
-
-
-  <p align="right">
-  <img src="https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/6a683c0c-a602-44af-9085-5d0094b379ba" alt="Image" />
-</p>
-<div dir="rtl">&bull;در این تانل از 2 سرور خارج و 1 سرور ایران استفاده میکنیم.  </div>
-   <div dir="rtl">&bull;تعداد سرور خارجی که دارید را وارد نمایید ( بیشترین مقدار مجاز 5 عدد میباشد) </div>
-    <div dir="rtl">&bull; برای هر سرور خارج، ایپی یکسان ایران ( به طور مثال اروان ) را قرار دهید و ایپی های سرور خارج خود را به ازای هر سرور، وارد نمایید</div>
-     <div dir="rtl">&bull; توجه کنید که اگر به طور مثال ایپی ترکیه را برای سرور یک خارج وارد نمایید، همان ایپی را برای کانفیگ سرور 1 خارج وارد نمایید</div>
-       <div dir="rtl">&bull;به این معنی که اگر برای سرور یک از ایپی ترکیه و سرور دوم از ایپی آلمان استفاده کردید، در کانفیگ سرور های خارج هم سرور اول ایپی ترکیه و سرور دوم ایپی آلمان خواهد بود در غیر اینصورت تانل برقرار نخواهد شد </div>
-      <div dir="rtl">&bull; تعداد ایپی که برای هر سرور نیاز دارید را وارد نمایید</div>
-       <div dir="rtl">&bull; برای اینکه cronjob برای سرور های شما ساخته شود، تعداد سرور ها را با فاصله وارد نمایید. به طور مثال اگر 2 سرور خارج دارید اینگونه وارد نمایید ( 2 1 )</div>
-
-
--------------------------------
-**تانل 6to4 به دو صورت**
-
-![7115070](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/cde3ca64-6750-48dc-8a60-001d44bbdd3d)**تانل 6to4 بدون Anycast**
-
-
-![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/d30892cf-cd26-4695-886d-9a4a47ade691)**سرور خارج**
-
-  <p align="right">
-  <img src="https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/81a38493-7df2-46f5-b51b-fee1c7e03349" alt="Image" />
-</p>
-<div dir="rtl">&bull;در این تانل از یک سرور خارج و یک سرور ایران استفاده میکنیم.  </div>
-   <div dir="rtl">&bull; کانفیگ تانل را از سرور خارج آغاز میکنیم. ایپی سرور ایران و خارج را وارد نمایید </div>
-    <div dir="rtl">&bull; تعداد ایپی که نیاز دارید را وارد نمایید</div>
-     <div dir="rtl">&bull; برای اینکه سرویس پینگ فعال شود، لطفا طبق اسکرین شات ایپی 4 سرور ایران را وارد نمایید</div>
-    
-
-----------------------------------------------------
-
-![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/d30892cf-cd26-4695-886d-9a4a47ade691)**سرور ایران**
-
-
-  <p align="right">
-  <img src="https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/dae46cda-ae43-474a-b795-2772e355303f" alt="Image" />
-</p>
-<div dir="rtl">&bull;در این تانل از یک سرور خارج و یک سرور ایران استفاده میکنیم.  </div>
-   <div dir="rtl">&bull; ایپی سرور ایران و خارج را وارد نمایید </div>
-    <div dir="rtl">&bull; تعداد ایپی که نیاز دارید را وارد نمایید</div>
-     <div dir="rtl">&bull; برای اینکه سرویس پینگ فعال شود، لطفا طبق اسکرین شات ایپی 4 سرور خارج را وارد نمایید</div>
-    
-
-
--------------------------------
-![7115070](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/cde3ca64-6750-48dc-8a60-001d44bbdd3d)**تانل 6to4 با Anycast**
-
-![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/d30892cf-cd26-4695-886d-9a4a47ade691)**سرور خارج**
-
-  <p align="right">
-  <img src="https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/fddfce1e-7e27-4d39-b3cb-38f5da53c798" alt="Image" />
-</p>
-<div dir="rtl">&bull;در این تانل از یک سرور خارج و یک سرور ایران استفاده میکنیم.  </div>
-   <div dir="rtl">&bull; کانفیگ تانل را از سرور خارج آغاز میکنیم. ایپی سرور خارج را وارد نمایید </div>
-    <div dir="rtl">&bull; تعداد ایپی که نیاز دارید را وارد نمایید</div>
-     <div dir="rtl">&bull; برای اینکه سرویس پینگ فعال شود،  ایپی 4 سرور ایران را وارد نمایید</div>
-    <div dir="rtl">&bull; از این ایپی میتوانید در سرور های دیگر هم استفاده نمایید و پینگ بگیرید اما پینگ تایم بستگی به سرور شما دارد و ممکن است مناسب نباشد</div>
-
-----------------------------------------------------
-
-![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/d30892cf-cd26-4695-886d-9a4a47ade691)**سرور ایران**
-
-
-  <p align="right">
-  <img src="https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/ae470272-77ee-439c-984e-d4e5b4ec6155" alt="Image" />
-</p>
-<div dir="rtl">&bull;در این تانل از یک سرور خارج و یک سرور ایران استفاده میکنیم.  </div>
-   <div dir="rtl">&bull; ایپی سرور ایران را وارد نمایید </div>
-    <div dir="rtl">&bull; تعداد ایپی که نیاز دارید را وارد نمایید</div>
-     <div dir="rtl">&bull; برای اینکه سرویس پینگ فعال شود، لطفا ایپی 4 سرور خارج را وارد نمایید</div>
-     <div dir="rtl">&bull; از این ایپی میتوانید در سرور های دیگر هم استفاده نمایید و پینگ بگیرید اما پینگ تایم بستگی به سرور شما دارد و ممکن است مناسب نباشد</div>
-
-
--------------------------------
-
-**اسکرین شات**
-<details>
-  <summary align="right">Click to reveal image</summary>
-  
-  <p align="right">
-    <img src="https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/bbc60d8e-0e86-4eb8-897d-e9f0f57306bc" alt="menu screen" />
-  </p>
-</details>
-
+[English](/README.md) | [Persian](/README-Fa.md)
 
 ------------------------------------------
-![scri](https://github.com/Azumi67/FRP-V2ray-Loadbalance/assets/119934376/cbfb72ac-eff1-46df-b5e5-a3930a4a6651)
-**اسکریپت های کارآمد :**
-- این اسکریپت ها optional میباشد.
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./Media/Pic.png">
+    <img alt="6to4" src="./Media/Pic.png">
+  </picture>
+</p>
 
 
- 
- Opiran Script
-```
-apt install curl -y && bash <(curl -s https://raw.githubusercontent.com/opiran-club/VPS-Optimizer/main/optimizer.sh --ipv4)
-```
+<h2 align="center"><strong>6TO4 Tunnel - Private IP (Multiple SERVERS)
+  <br>
+(Tunnel Between 5 Foreign Servers and 1 in Iran, and Vice Versa)
+</strong></h2>
 
-Hawshemi script
+<br>
 
-```
-wget "https://raw.githubusercontent.com/hawshemi/Linux-Optimizer/main/linux-optimizer.sh" -O linux-optimizer.sh && chmod +x linux-optimizer.sh && bash linux-optimizer.sh
-```
+[![](https://img.shields.io/github/v/release/Azumi67/6TO4-PrivateIP_multipleSERVERS.svg)](https://github.com/Azumi67/6TO4-PrivateIP_multipleSERVERS/releases)
+[![Downloads](https://img.shields.io/github/downloads/Azumi67/6TO4-PrivateIP_multipleSERVERS/total.svg)](#)
+[![License](https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
-<div dir="rtl">&bull; اضافه کردن ایپی 6 اضافه</div>
- 
-  
-```
-bash <(curl -s -L https://raw.githubusercontent.com/opiran-club/softether/main/opiran-seth)
-```
+> **Disclaimer:** This project is only for personal learning and communication, please do not use it for illegal purposes, please do not use it in a production environment
 
------------------------------------------------------
-![R (a2)](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/716fd45e-635c-4796-b8cf-856024e5b2b2)
-**اسکریپت من**
-----------------
+<br>
 
+## 🔧 Install & Upgrade
 
 ```
 apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67/6TO4-PrivateIP_multipleSERVERS/main/6to4.sh --ipv4)
 ```
 
+<br>
 
----------------------------------------------
-![R (7)](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/42c09cbb-2690-4343-963a-5deca12218c1)
-**تلگرام** 
-![R (6)](https://github.com/Azumi67/FRP-V2ray-Loadbalance/assets/119934376/f81bf6e1-cfed-4e24-b944-236f5c0b15d3) [اپیران- OPIRAN](https://t.me/OPIranClubb)
+## **🌟 Features**  
 
----------------------------------
-![R23 (1)](https://github.com/Azumi67/FRP-V2ray-Loadbalance/assets/119934376/18d12405-d354-48ac-9084-fff98d61d91c)
-**سورس ها**
+- Create a 6to4 tunnel between multiple servers [Anycast] & [PrivateIP]  
 
-![R (9)](https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/4758a7da-ab54-4a0a-a5a6-5f895092f527)[سورس های Hwashemi](https://github.com/hawshemi/Linux-Optimizer)
+- Tunnel between 5 foreign servers and 1 Iranian server, and vice versa  
 
-![R (9)](https://github.com/Azumi67/FRP-V2ray-Loadbalance/assets/119934376/33388f7b-f1ab-4847-9e9b-e8b39d75deaa) [سورس های OPIRAN](https://github.com/opiran-club)
+- Ability to use the IP on other servers (not recommended) [Anycast]  
+
+- Uses `cronjob` instead of `service`  
+
+- Ability to delete tunnels  
+
+- After setting up this tunnel, you can use the generated IPs for the main tunnel or port forwarding  
+
+- Compatible with load balancing in FRP  
+
+- Ability to create multiple private IPs for your servers  
+
+ 
+<br>
+
+##  💡 Tips
+
+<details>
+  <summary>Click For Tips</summary>
+
+1. **Configure Foreign Servers First**  
+   - Start by configuring your foreign servers first, then configure the Iranian server.
+
+2. **Tunnel Between 5 Foreign Servers and 1 Iranian Server**  
+   - You can create a tunnel between 5 foreign servers and 1 Iranian server, and vice versa.
+
+3. **Use of Private IPs for Load Balancing**  
+   - These private IPs can be used for load balancing, which I will provide soon.
+
+4. **Fixing Ping Issues Between Servers**  
+   - If pinging between the 5 foreign servers and 1 Iranian server does not work while creating the tunnel, reboot all the servers at once. This should likely fix the issue.
+
+5. **Alternative Solution for Connection Issues**  
+   - If there is a specific server connection issue (e.g., in the 5 foreign server and 1 Iranian server tunnel, server 3 is the problem), uninstall the problematic server and reconfigure it.
+
+6. **Ensure Correct Use of IPs**  
+   - Ensure that you use the correct IP for each server to avoid errors.
+   - For example, when configuring foreign server 1 and the Iranian server, you should use the Turkish server’s IP for foreign server 1, and use the German server’s IP for foreign server 2 and the Iranian server.
+
+7. **SSH or Ping from Iranian Server to Foreign Servers**  
+   - Before setting up the 6to4 tunnel, make sure you can SSH or ping from the Iranian server to the foreign servers.
+
+8. **Private IPs for Each Foreign Server**  
+   - In the Iranian server configuration, you will have a unique private IP for each foreign server. Ensure these IPs are entered correctly.
+
+9. **If the Tunnel is Panel-to-Panel**  
+   - For panel-to-panel tunnels, only the foreign server’s IP is required.
+
+10. **If FRP Tunnels Are Used**  
+    - For FRP tunnels, you will need the private IPs of each foreign server on the Iranian server.
+
+11. **Open Private IPs**  
+    - If the tunnel is panel-to-panel, you will need to open the private IPs.
+
+12. **Testing and Error Correction for Tunnel Configuration**  
+    - Through trial and error, you can configure the tunnels correctly.
+</details>
+
+  <br>
+
+  
+##  📜 How To Use Script
+
+<details>
+  <summary>Click For Usage Instructions</summary>
+  
+  ### 🛠 Creating a Private IP Between 1 Foreign Server and 1 Iranian Server
+  <details>
+    <summary>Click For Details</summary>
+    
+      - Create a private IP: Start from the foreign server.  
+      - Enter the IPv4 addresses of both the foreign and Iranian servers.  
+      - Enter the /64 subnet.  
+      - Specify the number of private IPs you need.  
+      - Save the generated IPs in Notepad for use in the tunnel.  
+      - The private IP and a ping service will be automatically created to prevent disruptions.  
+      - Repeat the same steps for the Iranian server.  
+
+  </details>
+
+  <br>
+
+  ### 🛠 Creating a Private IP Between 1 Foreign Server and 5 Iranian Servers
+  <details>
+    <summary>Click For Details</summary>
+
+    🌍 Foreign Server Configuration
+    
+    - In this tunnel, we use 2 Iranian servers and 1 foreign server.  
+    - Always start the tunnel configuration from the foreign server.  
+    - Enter the number of Iranian servers you have (the maximum allowed is 5 servers).  
+    - For each Iranian server, enter the same foreign IP (e.g., Turkey).  
+    - Note: If you use the Yerevan IP for Iranian server 1, use the same Yerevan IP for the configuration of Iranian server 1.  
+    - For example, if you use the Yerevan IP for server 1 and the Shatel IP for server 2, then in the Iranian server configuration, server 1 will use the Yerevan IP and server 2 will use the Shatel IP. Otherwise, the tunnel won't be established.  
+    - Enter the number of IPs you need for each server.  
+    - To create cronjobs for your servers, enter the number of servers with a space in between. For example, if you have 2 Iranian servers, enter it as (2 1).  
+
+    ---
+
+    🇮🇷 Iranian Server 1 Configuration
+
+    - Now, we need to configure each Iranian server separately.  
+    - For example, if for Iranian server 1, we used the Yerevan server IP (from the previous image), then we need to use the Yerevan IP here as well for Iranian server 1.  
+    - The foreign server IP remains the same for all Iranian servers since the tunnel involves 3 Iranian servers and 1 foreign server.  
+    - Enter the number of IPs you want for this server.  
+
+    ---
+
+    🇮🇷 Iranian Server 2 Configuration
+
+    - For Iranian server 2, configure it as explained for Iranian server 1.  
+    - The foreign server IP is the same for all Iranian servers.  
+    - Enter the number of IPs you need for this server.  
+    - If you have a third Iranian server, configure it in the same way as the previous servers.  
+    - To remove tunnels, go to the relevant section to delete the tunnel.  
+
+  </details>
+
+  <br>
+
+  ### 🛠 Creating a Private IP Between 5 Foreign Servers and 1 Iranian Server
+  <details>
+    <summary>Click For Details</summary>
+
+    🌍 Foreign Server Configuration
+
+    - Always start the tunnel configuration from the **foreign server**.  
+    - Now, we need to configure each foreign server separately.  
+    - The Iranian server is the same for all foreign servers, since the tunnel involves 3 foreign servers and 1 Iranian server.  
+    - Enter the number of IPs you want for each foreign server.
+
+    ---
+
+    🌍 Foreign Server 2 Configuration
+
+    - For foreign server 2, configure it similarly as you did for foreign server 1.  
+    - The Iranian server is the same for all foreign servers.  
+    - Enter the number of IPs you want for this server.  
+    - If you have a third foreign server, configure it as shown in the example.  
+    - To remove tunnels, go to the relevant section and delete the tunnel.  
 
 
------------------------------------------------------
+    ---
 
-![youtube-131994968075841675](https://github.com/Azumi67/FRP-V2ray-Loadbalance/assets/119934376/24202a92-aff2-4079-a6c2-9db14cd0ecd1)
-**ویدیوی آموزش**
+    🇮🇷 Iranian Server Configuration
 
------------------------------------------
+    - This tunnel uses 2 foreign servers and 1 Iranian server.  
+    - Enter the number of foreign servers you have (the maximum allowed is 5 servers).  
+    - For each foreign server, enter the same Iranian IP (e.g., Yerevan) and specify the foreign server IP for each server.  
+    - Note: If you enter the Turkey IP for foreign server 1, use the same Turkey IP for the configuration of foreign server 1.  
+    - This means that if you use the Turkey IP for server 1 and the Germany IP for server 2, the configuration of the foreign servers will also have Turkey IP for server 1 and Germany IP for server 2, otherwise, the tunnel will not be established.  
+    - Enter the number of IPs you need for each foreign server.  
+    - To create cronjobs for your servers, enter the number of servers with a space in between. For example, if you have 2 foreign servers, enter it as (2 1).  
+
+  </details>
+</details>
 
 
+<br>
+ 
+
+## **🌐 6 TO 4 Tunnel Types** 
+<details>
+  <summary>Click for Tunnel Details</summary>
+  
+  ### **❌ Tunnel Without Anycast**  
+  <details>
+    <summary>Click For Details</summary>
+    
+    🌍 Foreign Server Configuration
+    
+    - This tunnel uses one foreign server and one Iranian server.  
+    - Start the tunnel configuration from the **foreign server**. Enter both the foreign and Iranian server IPs.  
+    - Specify the number of IPs you need.  
+    - To enable the ping service, enter the **IPv4 address of the Iranian server** as shown in the screenshot.  
+    
+    ---
+
+    🇮🇷 Iranian Server Configuration
+
+    - This tunnel uses one foreign server and one Iranian server.  
+    - Enter both the foreign and Iranian server IPs.  
+    - Specify the number of IPs you need.  
+    - To enable the ping service, enter the **IPv4 address of the foreign server** as shown in the screenshot.  
+
+  </details>
+
+  <br>
+
+  ### **✅ Tunnel with Anycast**  
+  <details>
+    <summary>Click For Details</summary>
+    
+    🌍 Foreign Server Configuration
+
+    - This tunnel uses one foreign server and one Iranian server.  
+    - Start the tunnel configuration from the **foreign server**. Enter the foreign server IP.  
+    - Specify the number of IPs you need.  
+    - To enable the ping service, enter the **IPv4 address of the Iranian server**.  
+    - You can use this IP on other servers as well and get a ping, but the ping time depends on your server and may not be optimal.  
+    
+    ---
+
+    🇮🇷 Iranian Server Configuration
+
+    - This tunnel uses one foreign server and one Iranian server.  
+    - Enter the **IPv4 address** of the Iranian server.  
+    - Specify the number of IPs you need.  
+    - To enable the ping service, enter the **IPv4 address of the foreign server**.  
+    - You can use this IP on other servers as well and get a ping, but the ping time depends on your server and may not be optimal.  
+
+  </details>
+</details>
+
+<br>
+
+## 👀 Preview  
+<details>
+  <summary><strong>📷 Click to Expand Screenshots</strong></summary>
+  <br>
+
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./Media/Screenshot1.png">
+    <img alt="6TO4-SS1" src="./Media/Screenshot1.png">
+  </picture>
+
+  <br>
+
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./Media/Screenshot2.png">
+    <img alt="6TO4-SS2" src="./Media/Screenshot2.png">
+  </picture>
+
+  <br>
+</details>
+
+<br>
+
+## 🙏 A Special Thanks to
+
+- [Azumi67](https://github.com/Azumi67/)
+- [Amir SPB](https://github.com/AMiR-SPB/)
+
+
+<br>
+  
+## **💻 Useful Scripts**  
+> - These Scripts are Optional.  
+
+
+#### OP Iran Script
+```bash
+apt install curl -y && bash <(curl -s https://raw.githubusercontent.com/opiran-club/VPS-Optimizer/main/optimizer.sh --ipv4)
+```
+
+#### Hawshemi Script
+```bash
+wget "https://raw.githubusercontent.com/hawshemi/Linux-Optimizer/main/linux-optimizer.sh" -O linux-optimizer.sh && chmod +x linux-optimizer.sh && bash linux-optimizer.sh
+```
+
+#### Add an Additional IPV6 Address
+```bash
+bash <(curl -s -L https://raw.githubusercontent.com/opiran-club/softether/main/opiran-seth)
+```
+
+<br>
+
+## **💬 Telegram :** 
+
+🆔 [OP Iran GP](https://t.me/OPIranClub)
+
+<br>
+
+## **📂 Source :**
+<details>
+  <summary><strong>Click to See</strong></summary>
+ 
+  ### 1️⃣ [OP Iran](https://github.com/opiran-club)
+  ### 2️⃣ [Hwashemi](https://github.com/hawshemi/Linux-Optimizer)
+  
+  <br>
+</details>
+
+<br>
+
+## **📺 Tutorial :**
+<details>
+  <summary><strong>Click to Watch Tutorial Videos</strong></summary>
+ 
+  ### 1️⃣ [YouTube](#)
+
+<br>
+</details>
+
+------------------------------------------
