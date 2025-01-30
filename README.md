@@ -108,6 +108,8 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
   <details>
     <summary>Click For Details</summary>
     
+  > ![6TO4-1-1](./Media/1-1.png)
+
       - Create a private IP: Start from the foreign server.  
       - Enter the IPv4 addresses of both the foreign and Iranian servers.  
       - Enter the /64 subnet.  
@@ -124,8 +126,10 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
   <details>
     <summary>Click For Details</summary>
 
+  > ![6TO4-1-1](./Media/1F-5IR-F.png)
+
     🌍 Foreign Server Configuration
-    
+
     - In this tunnel, we use 2 Iranian servers and 1 foreign server.  
     - Always start the tunnel configuration from the foreign server.  
     - Enter the number of Iranian servers you have (the maximum allowed is 5 servers).  
@@ -137,6 +141,8 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
 
     ---
 
+> ![6TO4-1-1](./Media/1F-5IR-IR1.jpg)
+
     🇮🇷 Iranian Server 1 Configuration
 
     - Now, we need to configure each Iranian server separately.  
@@ -145,6 +151,8 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
     - Enter the number of IPs you want for this server.  
 
     ---
+
+> ![6TO4-1-1](./Media/1F-5IR-IR2.jpg)
 
     🇮🇷 Iranian Server 2 Configuration
 
@@ -162,6 +170,8 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
   <details>
     <summary>Click For Details</summary>
 
+  > ![6TO4-1-1](./Media/5F-1IR-F1.png)
+
     🌍 Foreign Server Configuration
 
     - Always start the tunnel configuration from the **foreign server**.  
@@ -170,6 +180,8 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
     - Enter the number of IPs you want for each foreign server.
 
     ---
+
+  > ![6TO4-1-1](./Media/5F-1IR-F2.png)
 
     🌍 Foreign Server 2 Configuration
 
@@ -181,6 +193,8 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
 
 
     ---
+
+  > ![6TO4-1-1](./Media/5F-1IR-F2.png)
 
     🇮🇷 Iranian Server Configuration
 
@@ -206,7 +220,9 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
   ### **❌ Tunnel Without Anycast**  
   <details>
     <summary>Click For Details</summary>
-    
+
+  > ![6TO4-1-1](./Media/T-WO-F.png)
+
     🌍 Foreign Server Configuration
     
     - This tunnel uses one foreign server and one Iranian server.  
@@ -215,6 +231,8 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
     - To enable the ping service, enter the **IPv4 address of the Iranian server** as shown in the screenshot.  
     
     ---
+
+  > ![6TO4-1-1](./Media/T-WO-IR.png)
 
     🇮🇷 Iranian Server Configuration
 
@@ -230,7 +248,9 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
   ### **✅ Tunnel with Anycast**  
   <details>
     <summary>Click For Details</summary>
-    
+
+  > ![6TO4-1-1](./Media/T-W-F.png)
+
     🌍 Foreign Server Configuration
 
     - This tunnel uses one foreign server and one Iranian server.  
@@ -240,6 +260,8 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
     - You can use this IP on other servers as well and get a ping, but the ping time depends on your server and may not be optimal.  
     
     ---
+
+  > ![6TO4-1-1](./Media/T-W-IR.png)
 
     🇮🇷 Iranian Server Configuration
 
