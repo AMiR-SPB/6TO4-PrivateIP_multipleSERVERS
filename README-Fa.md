@@ -124,6 +124,8 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
   <details>
     <summary>برای مشاهده جزئیات کلیک کنید</summary>
     
+   > ![6TO4-1-1](./Media/1-1.png)
+
       - ایجاد یک IP خصوصی: از سرور خارجی شروع کنید.  
       - آدرس‌های IPv4 سرورهای خارجی و ایرانی را وارد کنید.  
       - Subnet /64 را وارد کنید.  
@@ -140,6 +142,8 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
   <details>
     <summary>برای مشاهده جزئیات کلیک کنید</summary>
 
+> ![6TO4-1-1](./Media/1F-5IR-F.png)
+
     🌍 پیکربندی سرور خارجی
     
     - در این تونل، از 2 سرور ایرانی و 1 سرور خارجی استفاده می‌کنیم.  
@@ -153,6 +157,8 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
 
     ---
 
+> ![6TO4-1-1](./Media/1F-5IR-IR1.jpg)
+
     🇮🇷 پیکربندی سرور ایرانی 1
 
     - حالا باید هر سرور ایرانی را به طور جداگانه پیکربندی کنید.  
@@ -161,6 +167,8 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
     - تعداد IPهای مورد نیاز برای این سرور را وارد کنید.  
 
     ---
+
+> ![6TO4-1-1](./Media/1F-5IR-IR2.jpg)
 
     🇮🇷 پیکربندی سرور ایرانی 2
 
@@ -178,6 +186,8 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
   <details>
     <summary>برای مشاهده جزئیات کلیک کنید</summary>
 
+  > ![6TO4-1-1](./Media/5F-1IR-F1.png)
+
     🌍 پیکربندی سرور خارجی
 
     - همیشه پیکربندی تونل را از **سرور خارجی** شروع کنید.  
@@ -186,6 +196,8 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
     - تعداد IPهای مورد نیاز برای هر سرور خارجی را وارد کنید.
 
     ---
+
+  > ![6TO4-1-1](./Media/5F-1IR-F2.png)
 
     🌍 پیکربندی سرور خارجی 2
 
@@ -196,6 +208,8 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
     - برای حذف تونل‌ها، به بخش مربوطه بروید و تونل را حذف کنید.  
 
     ---
+
+  > ![6TO4-1-1](./Media/5F-1IR-IR1.png)
 
     🇮🇷 پیکربندی سرور ایرانی
 
@@ -219,7 +233,9 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
   ### **❌ تونل بدون Anycast**
   <details>
     <summary>برای جزئیات کلیک کنید</summary>
-    
+
+  > ![6TO4-1-1](./Media/T-WO-F.png)
+      
     🌍 پیکربندی سرور خارجی
     
     - این تونل از یک سرور خارجی و یک سرور ایرانی استفاده می‌کند.  
@@ -228,6 +244,8 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
     - برای فعال کردن سرویس پینگ، **آدرس IPv4 سرور ایرانی** را وارد کنید.  
     
     ---
+
+  > ![6TO4-1-1](./Media/T-WO-IR.png)
 
     🇮🇷 پیکربندی سرور ایرانی
 
@@ -243,7 +261,9 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
   ### **✅ تونل با Anycast**
   <details>
     <summary>برای جزئیات کلیک کنید</summary>
-    
+
+  > ![6TO4-1-1](./Media/T-W-F.png)
+      
     🌍 پیکربندی سرور خارجی
 
     - این تونل از یک سرور خارجی و یک سرور ایرانی استفاده می‌کند.  
@@ -252,6 +272,8 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
     - برای فعال کردن سرویس پینگ، **آدرس IPv4 سرور ایرانی** را وارد کنید.  
 
     ---
+
+  > ![6TO4-1-1](./Media/T-W-IR.png)
 
     🇮🇷 پیکربندی سرور ایرانی
 
