@@ -477,7 +477,7 @@ function private_ip_3() {
     clear
     echo $'\e[92m ^ ^\e[0m'
     echo $'\e[92m(\e[91mO,O\e[92m)\e[0m'
-    echo $'\e[92m(   ) \e[92m[3]\e[93mKharej- \e[92m[1]\e[93mIran private ip Menu\e[0m'
+    echo $'\e[92m(   ) \e[92m[5]\e[93mKharej- \e[92m[1]\e[93mIran private ip Menu\e[0m'
     echo $'\e[92m "-"\e[93m════════════════════════════════════\e[0m'
 	display_logoo
   echo -e "\e[93m.------------------------------------------------------------------------------------------------------------------------------------.\e[0m"
@@ -1429,7 +1429,7 @@ function private_ip_1() {
     clear
     echo $'\e[92m ^ ^\e[0m'
     echo $'\e[92m(\e[91mO,O\e[92m)\e[0m'
-    echo $'\e[92m(   ) \e[92m[1]\e[93mKharej - \e[92m[3]\e[93mIran private ip Menu\e[0m'
+    echo $'\e[92m(   ) \e[92m[1]\e[93mKharej - \e[92m[5]\e[93mIran private ip Menu\e[0m'
     echo $'\e[92m "-"\e[93m════════════════════════════════\e[0m'
 	  echo -e "\e[93m.------------------------------------------------------------------------------------------------------------------------------------.\e[0m"
   echo -e "\e[93m| \e[92mEstablish the tunnel on  3 different iran server and one kharej server        \e[0m"
