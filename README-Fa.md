@@ -31,7 +31,7 @@
 <div dir="rtl">
   <h2>🔧 نصب و بروزرسانی</h2></div>
   <pre>
-    apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/AMiR-SPB/6TO4-PrivateIP-MultipleSERVERS/main/6to4.sh --ipv4)
+apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67/6TO4-PrivateIP_multipleSERVERS/main/6to4.sh --ipv4)
   </pre>
   <br>
 
