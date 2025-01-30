@@ -194,7 +194,7 @@ apt install curl -y && bash <(curl -Ls https://raw.githubusercontent.com/Azumi67
 
     ---
 
-  > ![6TO4-1-1](./Media/5F-1IR-F2.png)
+  > ![6TO4-1-1](./Media/5F-1IR-IR1.png)
 
     🇮🇷 Iranian Server Configuration
 
